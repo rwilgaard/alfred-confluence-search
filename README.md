@@ -1,2 +1,2 @@
-# alfred-template
-Template repository for Alfred workflows
+# Confluence Search
+A workflow for finding pages and spaces in your Confluence installation.

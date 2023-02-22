@@ -10,6 +10,7 @@ import (
     "time"
 
     aw "github.com/deanishe/awgo"
+    "github.com/deanishe/awgo/update"
     cf "github.com/rwilgaard/confluence-go-api"
 )
 
@@ -19,17 +20,26 @@ type workflowConfig struct {
     APIToken string `env:"apitoken"`
 }
 
+const (
+    repo          = "rwilgaard/alfred-confluence-search"
+    updateJobName = "checkForUpdates"
+)
+
 var (
     wf          *aw.Workflow
     cacheFlag   bool
+    updateFlag  bool
     cacheName   = "spaces.json"
     maxCacheAge = 24 * time.Hour
     spaceCache  []string
 )
 
 func init() {
-    wf = aw.New()
+    wf = aw.New(
+        update.GitHub(repo),
+    )
     flag.BoolVar(&cacheFlag, "cache", false, "cache space keys")
+    flag.BoolVar(&updateFlag, "update", false, "check for updates")
 }
 
 func run() {
@@ -37,8 +47,33 @@ func run() {
     flag.Parse()
     query := flag.Arg(0)
 
-    cfg := &workflowConfig{}
+    if updateFlag {
+        wf.Configure(aw.TextErrors(true))
+        log.Println("Checking for updates...")
+        if err := wf.CheckForUpdate(); err != nil {
+            wf.FatalError(err)
+        }
+        return
+    }
 
+    if wf.UpdateCheckDue() && !wf.IsRunning(updateJobName) {
+        log.Println("Running update check in background...")
+        cmd := exec.Command(os.Args[0], "-update")
+        if err := wf.RunInBackground(updateJobName, cmd); err != nil {
+            log.Printf("Error starting update check: %s", err)
+        }
+    }
+
+    if wf.UpdateAvailable() {
+        wf.Configure(aw.SuppressUIDs(true))
+        wf.NewItem("Update Available!").
+            Subtitle("Press ⏎ to install").
+            Autocomplete("workflow:update").
+            Valid(false).
+            Icon(aw.IconInfo)
+    }
+
+    cfg := &workflowConfig{}
     if err := wf.Config.To(cfg); err != nil {
         panic(err)
     }
