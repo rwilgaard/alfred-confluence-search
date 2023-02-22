@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: universal-binary
-          path: workflow/PLACEHOLDER
+          path: workflow/alfred-confluence-search
 
   release:
     needs: build-release
@@ -61,8 +61,8 @@ jobs:
           path: download
 
       - run: |
-          test -f download/PLACEHOLDER && cp download/PLACEHOLDER workflow/PLACEHOLDER
-          chmod +x workflow/PLACEHOLDER
+          test -f download/alfred-confluence-search && cp download/alfred-confluence-search workflow/alfred-confluence-search
+          chmod +x workflow/alfred-confluence-search
           rm -rf download
 
       - name: Package Alfred workflow
