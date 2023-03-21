@@ -1,17 +1,17 @@
 package main
 
 import (
-    "flag"
-    "fmt"
-    "log"
-    "os"
-    "os/exec"
-    "strings"
-    "time"
+	"fmt"
+	"html"
+	"log"
+	"os"
+	"os/exec"
+	"strings"
+	"time"
 
-    aw "github.com/deanishe/awgo"
-    "github.com/deanishe/awgo/update"
-    cf "github.com/rwilgaard/confluence-go-api"
+	aw "github.com/deanishe/awgo"
+	"github.com/deanishe/awgo/update"
+	cf "github.com/rwilgaard/confluence-go-api"
 )
 
 type workflowConfig struct {
@@ -27,27 +27,24 @@ const (
 
 var (
     wf          *aw.Workflow
-    cacheFlag   bool
-    updateFlag  bool
     cacheName   = "spaces.json"
     maxCacheAge = 24 * time.Hour
-    spaceCache  []string
+    spaceCache  []Space
 )
 
 func init() {
     wf = aw.New(
         update.GitHub(repo),
     )
-    flag.BoolVar(&cacheFlag, "cache", false, "cache space keys")
-    flag.BoolVar(&updateFlag, "update", false, "check for updates")
 }
 
 func run() {
-    wf.Args()
-    flag.Parse()
-    query := flag.Arg(0)
+    if err := cli.Parse(wf.Args()); err != nil {
+        wf.FatalError(err)
+    }
+    opts.Query = cli.Arg(0)
 
-    if updateFlag {
+    if opts.Update {
         wf.Configure(aw.TextErrors(true))
         log.Println("Checking for updates...")
         if err := wf.CheckForUpdate(); err != nil {
@@ -83,7 +80,7 @@ func run() {
         panic(err)
     }
 
-    if cacheFlag {
+    if opts.Cache {
         wf.Configure(aw.TextErrors(true))
         log.Println("[main] fetching spaces...")
         spaces := getSpaces(*api)
@@ -97,6 +94,7 @@ func run() {
     if wf.Cache.Expired(cacheName, maxCacheAge) {
         wf.Rerun(0.3)
         if !wf.IsRunning("cache") {
+            log.Println("[main] fetching spaces...")
             cmd := exec.Command(os.Args[0], "-cache")
             if err := wf.RunInBackground("cache", cmd); err != nil {
                 wf.FatalError(err)
@@ -106,11 +104,30 @@ func run() {
         }
     }
 
-    cql, spaceList := parseQuery(query)
+    if opts.Spaces {
+        runSpaces()
+        if len(opts.Query) > 0 {
+            wf.Filter(opts.Query)
+        }
+        wf.SendFeedback()
+        return
+    }
+
+    if autocompleteSpaces(opts.Query) {
+        if err := wf.Cache.StoreJSON("prev_query", opts.Query); err != nil {
+            wf.FatalError(err)
+        }
+        if err := wf.Alfred.RunTrigger("spaces", ""); err != nil {
+            wf.FatalError(err)
+        }
+        return
+    }
+
+    cql, spaceList := parseQuery(opts.Query)
     pages := getPages(*api, cql)
 
     if len(spaceList) == 1 {
-        homeIcon := aw.Icon{Value: fmt.Sprintf("%s/icons/home.png", wf.Dir())}
+        homeIcon := aw.Icon{Value: "icons/home.png"}
         spaceId := strings.ToUpper(spaceList[0])
         wf.NewItem(fmt.Sprintf("Open %s Space Home", spaceId)).
             Icon(&homeIcon).
@@ -120,19 +137,14 @@ func run() {
     }
 
     for _, page := range pages.Results {
-        iconPath := fmt.Sprintf("%s/icons/%s.png", wf.Dir(), page.Content.Space.Key)
-        icon := aw.IconWorkflow
-        if _, err := os.Stat(iconPath); err == nil {
-            icon = &aw.Icon{Value: iconPath}
-        }
         title := strings.ReplaceAll(page.Title, "@@@hl@@@", "")
         title = strings.ReplaceAll(title, "@@@endhl@@@", "")
         modTime := page.LastModified.Time.Format("02-01-2006 15:04")
         sub := fmt.Sprintf("%s  |  Updated: %s", page.Content.Space.Name, modTime)
-        wf.NewItem(title).Subtitle(sub).
+        wf.NewItem(html.UnescapeString(title)).Subtitle(sub).
             Var("item_url", page.URL).
             Arg("page").
-            Icon(icon).
+            Icon(getSpaceIcon(page.Content.Space.Key)).
             Valid(true)
     }
 
