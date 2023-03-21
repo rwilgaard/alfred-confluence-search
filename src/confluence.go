@@ -1,18 +1,23 @@
 package main
 
 import (
-    "fmt"
-    "regexp"
-    "strings"
+	"fmt"
+	"log"
+	"regexp"
+	"strings"
 
-    aw "github.com/deanishe/awgo"
-    "github.com/lithammer/fuzzysearch/fuzzy"
-    cf "github.com/rwilgaard/confluence-go-api"
-    "golang.org/x/exp/slices"
+	aw "github.com/deanishe/awgo"
+	"github.com/lithammer/fuzzysearch/fuzzy"
+	cf "github.com/rwilgaard/confluence-go-api"
 )
 
-func getSpaces(api cf.API) []string {
-    var spaces []string
+type Space struct {
+    Key  string
+    Name string
+}
+
+func getSpaces(api cf.API) []Space {
+    var spaces []Space
     params := cf.AllSpacesQuery{
         Limit: 9999,
         Type:  "global",
@@ -23,8 +28,11 @@ func getSpaces(api cf.API) []string {
         panic(err)
     }
 
+    log.Println(result.Size)
+
     for _, s := range result.Results {
-        spaces = append(spaces, strings.ToLower(s.Key))
+        space := Space{Key: s.Key, Name: s.Name}
+        spaces = append(spaces, space)
     }
 
     return spaces
@@ -45,11 +53,11 @@ func parseQuery(query string) (string, []string) {
         switch {
         case matchParam.MatchString(w):
             spaceKey := w[1:]
-            if slices.Contains(spaceCache, strings.ToLower(spaceKey)) {
+            if spaceExists(spaceKey, spaceCache) {
                 spaceList = append(spaceList, spaceKey)
             } else {
                 title := fmt.Sprintf("%s space not found...", strings.ToUpper(spaceKey))
-                s := fuzzy.Find(spaceKey, spaceCache)
+                s := fuzzy.Find(spaceKey, spaceCacheToSlice(spaceCache))
                 sub := fmt.Sprintf("Did you mean %s?", strings.Join(s, ", "))
                 wf.NewItem(title).Subtitle(sub).Icon(aw.IconInfo)
             }
@@ -64,6 +72,32 @@ func parseQuery(query string) (string, []string) {
     }
 
     return cql, spaceList
+}
+
+func spaceExists(key string, spaces []Space) bool {
+    for _, s := range spaces{
+        if strings.EqualFold(s.Key, key) {
+            return true
+        }
+    }
+    return false
+}
+
+func spaceCacheToSlice(spaces []Space) []string {
+    var spaceList []string
+    for _, s := range spaces {
+        spaceList = append(spaceList, s.Key)
+    }
+    return spaceList
+}
+
+func autocompleteSpaces(query string) bool {
+    for _, w := range strings.Split(query, " ") {
+        if w == "@" {
+            return true
+        }
+    }
+    return false
 }
 
 func getPages(api cf.API, cql string) *cf.Search {

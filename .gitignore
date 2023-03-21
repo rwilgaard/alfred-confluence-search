@@ -1,3 +1,4 @@
 .DS_Store
 *.alfredworkflow
 workflow/prefs.plist
+workflow/alfred-confluence-search
