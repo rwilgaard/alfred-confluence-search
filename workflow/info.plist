@@ -8,29 +8,15 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>1EACC07A-46A4-45BA-9497-BD908066AD32</key>
+		<key>8C6B1738-AA3D-4469-B055-5282A144E470</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>7D141F26-95B3-49E3-917B-CA5F192682FA</string>
+				<string>7D60B768-AE58-4B8C-8A7E-220045905370</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
-				<key>sourceoutputuid</key>
-				<string>3DD32F10-0318-4518-844F-C7BB57128177</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>477B2312-D50D-4598-A5B5-C0EE9E612A3B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>sourceoutputuid</key>
-				<string>937CAA12-5901-4C95-ABE8-86E86319EACA</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -52,13 +38,23 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>1EACC07A-46A4-45BA-9497-BD908066AD32</string>
+				<string>7D141F26-95B3-49E3-917B-CA5F192682FA</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy URL</string>
+				<key>vitoclose</key>
+				<true/>
 			</dict>
 		</array>
 	</dict>
@@ -84,7 +80,7 @@
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>{var:confluence_url}{var:item_url}</string>
+				<string>{var:item_url}</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.openurl</string>
@@ -115,7 +111,7 @@
 				<key>queuedelayimmediatelyinitially</key>
 				<true/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
@@ -152,67 +148,40 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>page</string>
-						<key>outputlabel</key>
-						<string>page</string>
-						<key>uid</key>
-						<string>3DD32F10-0318-4518-844F-C7BB57128177</string>
-					</dict>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>space</string>
-						<key>outputlabel</key>
-						<string>space</string>
-						<key>uid</key>
-						<string>937CAA12-5901-4C95-ABE8-86E86319EACA</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<true/>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:item_url}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>1EACC07A-46A4-45BA-9497-BD908066AD32</string>
+			<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
 			<key>version</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
+				<key>lastpathcomponent</key>
 				<false/>
-				<key>skipvarencode</key>
-				<true/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{var:confluence_url}/display/{var:item_url}</string>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>URL copied!</string>
+				<key>title</key>
+				<string>Confluence Search</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
+			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>477B2312-D50D-4598-A5B5-C0EE9E612A3B</string>
+			<string>7D60B768-AE58-4B8C-8A7E-220045905370</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -236,7 +205,7 @@
 				<key>queuedelayimmediatelyinitially</key>
 				<true/>
 				<key>queuedelaymode</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
@@ -299,33 +268,33 @@
 			<key>ypos</key>
 			<real>445</real>
 		</dict>
-		<key>1EACC07A-46A4-45BA-9497-BD908066AD32</key>
-		<dict>
-			<key>xpos</key>
-			<real>585</real>
-			<key>ypos</key>
-			<real>260</real>
-		</dict>
-		<key>477B2312-D50D-4598-A5B5-C0EE9E612A3B</key>
-		<dict>
-			<key>xpos</key>
-			<real>830</real>
-			<key>ypos</key>
-			<real>295</real>
-		</dict>
 		<key>7D141F26-95B3-49E3-917B-CA5F192682FA</key>
 		<dict>
 			<key>xpos</key>
-			<real>830</real>
+			<real>540</real>
 			<key>ypos</key>
-			<real>185</real>
+			<real>190</real>
+		</dict>
+		<key>7D60B768-AE58-4B8C-8A7E-220045905370</key>
+		<dict>
+			<key>xpos</key>
+			<real>685</real>
+			<key>ypos</key>
+			<real>295</real>
+		</dict>
+		<key>8C6B1738-AA3D-4469-B055-5282A144E470</key>
+		<dict>
+			<key>xpos</key>
+			<real>540</real>
+			<key>ypos</key>
+			<real>295</real>
 		</dict>
 		<key>DC4E363D-346B-41DA-A4E6-4E4C71D37B3E</key>
 		<dict>
 			<key>note</key>
-			<string>Search for pages</string>
+			<string>Select space</string>
 			<key>xpos</key>
-			<real>310</real>
+			<real>315</real>
 			<key>ypos</key>
 			<real>445</real>
 		</dict>

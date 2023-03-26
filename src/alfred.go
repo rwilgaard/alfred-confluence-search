@@ -5,7 +5,6 @@ import (
 	"html"
 	"strings"
 
-	aw "github.com/deanishe/awgo"
 	cf "github.com/rwilgaard/confluence-go-api"
 )
 
@@ -23,6 +22,8 @@ func runSpaces() {
 
     for _, s := range spaceCache {
         wf.NewItem(s.Key).
+            UID(s.Key).
+            Match(fmt.Sprintf("%s %s", s.Key, s.Name)).
             Icon(getSpaceIcon(s.Key)).
             Subtitle(s.Name).
             Arg(prevQuery + s.Key).
@@ -35,12 +36,11 @@ func runSearch(api *cf.API) {
     pages := getPages(*api, cql)
 
     if len(spaceList) == 1 {
-        homeIcon := aw.Icon{Value: "icons/home.png"}
         spaceId := strings.ToUpper(spaceList[0])
         wf.NewItem(fmt.Sprintf("Open %s Space Home", spaceId)).
-            Icon(&homeIcon).
+            Icon(homeIcon).
             Arg("space").
-            Var("item_url", spaceId).
+            Var("item_url", fmt.Sprintf("%s/display/%s", cfg.URL, spaceId)).
             Valid(true)
     }
 
@@ -48,11 +48,11 @@ func runSearch(api *cf.API) {
         title := strings.ReplaceAll(page.Title, "@@@hl@@@", "")
         title = strings.ReplaceAll(title, "@@@endhl@@@", "")
         modTime := page.LastModified.Time.Format("02-01-2006 15:04")
-        sub := fmt.Sprintf("%s  |  Updated: %s", page.Content.Space.Name, modTime)
+        sub := fmt.Sprintf("%s  •  Updated: %s", page.Content.Space.Name, modTime)
         wf.NewItem(html.UnescapeString(title)).Subtitle(sub).
-            Var("item_url", page.URL).
+            Icon(pageIcon).
+            Var("item_url", cfg.URL+page.URL).
             Arg("page").
-            Icon(getSpaceIcon(page.Content.Space.Key)).
             Valid(true)
     }
 }
