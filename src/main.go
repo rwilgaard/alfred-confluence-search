@@ -9,6 +9,7 @@ import (
 	aw "github.com/deanishe/awgo"
 	"github.com/deanishe/awgo/update"
 	cf "github.com/rwilgaard/confluence-go-api"
+	"go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
@@ -24,13 +25,21 @@ const (
 
 var (
     wf          *aw.Workflow
+    cfg         *workflowConfig
     cacheName   = "spaces.json"
     maxCacheAge = 24 * time.Hour
     spaceCache  []Space
 )
 
 func init() {
+    sopts := []fuzzy.Option{
+        fuzzy.AdjacencyBonus(10.0),
+        fuzzy.LeadingLetterPenalty(-0.1),
+        fuzzy.MaxLeadingLetterPenalty(-3.0),
+        fuzzy.UnmatchedLetterPenalty(-0.5),
+    }
     wf = aw.New(
+        aw.SortOptions(sopts...),
         update.GitHub(repo),
     )
 }
@@ -67,7 +76,7 @@ func run() {
             Icon(aw.IconInfo)
     }
 
-    cfg := &workflowConfig{}
+    cfg = &workflowConfig{}
     if err := wf.Config.To(cfg); err != nil {
         panic(err)
     }
