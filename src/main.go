@@ -42,6 +42,7 @@ func init() {
     wf = aw.New(
         aw.SortOptions(sopts...),
         update.GitHub(repo),
+        aw.AddMagic(magicAuth{wf}),
     )
 }
 

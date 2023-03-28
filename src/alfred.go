@@ -5,9 +5,19 @@ import (
 	"html"
 	"strings"
 
+	aw "github.com/deanishe/awgo"
 	"github.com/ncruces/zenity"
 	cf "github.com/rwilgaard/confluence-go-api"
 )
+
+type magicAuth struct {
+    wf *aw.Workflow
+}
+
+func (a magicAuth) Keyword() string     { return "clearauth" }
+func (a magicAuth) Description() string { return "Clear credentials for Confluence." }
+func (a magicAuth) RunText() string     { return "Credentials cleared!" }
+func (a magicAuth) Run() error          { return clearAuth() }
 
 func runSpaces() {
     if wf.Cache.Exists(cacheName) {
@@ -68,5 +78,11 @@ func runAuth() {
     if err := wf.Keychain.Set(keychainAccount, pwd); err != nil {
         wf.FatalError(err)
     }
+}
 
+func clearAuth() error {
+    if err := wf.Keychain.Delete(keychainAccount); err != nil {
+        return err
+    }
+    return nil
 }
