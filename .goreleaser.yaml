@@ -3,7 +3,7 @@ builds:
 
 release:
   extra_files:
-    - glob: ./PLACEHOLDER.alfredworkflow
+    - glob: ./alfred-confluence-search.alfredworkflow
   draft: true
 
 changelog:
