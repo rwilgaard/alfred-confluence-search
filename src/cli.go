@@ -16,6 +16,7 @@ type options struct {
     Update   bool
     Cache    bool
     Spaces   bool
+    Auth     bool
 }
 
 func init() {
@@ -23,4 +24,5 @@ func init() {
     cli.BoolVar(&opts.Cache, "cache", false, "cache spaces")
     cli.BoolVar(&opts.GetIcons, "geticons", false, "get all space icons")
     cli.BoolVar(&opts.Spaces, "spaces", false, "list spaces")
+    cli.BoolVar(&opts.Auth, "auth", false, "authenticate")
 }

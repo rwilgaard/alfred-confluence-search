@@ -21,6 +21,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>AA33E4A8-9024-471F-9D41-690927275A51</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D6C26769-861D-4FF3-A846-C5EE09F9852C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>DC4E363D-346B-41DA-A4E6-4E4C71D37B3E</key>
 		<array>
 			<dict>
@@ -34,7 +59,7 @@
 				<false/>
 			</dict>
 		</array>
-		<key>F83C34EB-B9C9-4E14-9802-150419E2F13F</key>
+		<key>F4E721AA-21BE-4CB2-9941-B980006E0DCF</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -48,7 +73,32 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
+				<string>D6C26769-861D-4FF3-A846-C5EE09F9852C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F83C34EB-B9C9-4E14-9802-150419E2F13F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F4E721AA-21BE-4CB2-9941-B980006E0DCF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>AA33E4A8-9024-471F-9D41-690927275A51</string>
 				<key>modifiers</key>
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
@@ -88,6 +138,57 @@
 			<string>7D141F26-95B3-49E3-917B-CA5F192682FA</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>auth</string>
+						<key>outputlabel</key>
+						<string>auth</string>
+						<key>uid</key>
+						<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>F4E721AA-21BE-4CB2-9941-B980006E0DCF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{var:item_url}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -148,25 +249,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{var:item_url}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -184,6 +266,61 @@
 			<string>7D60B768-AE58-4B8C-8A7E-220045905370</string>
 			<key>version</key>
 			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>auth</string>
+						<key>outputlabel</key>
+						<string>auth</string>
+						<key>uid</key>
+						<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>AA33E4A8-9024-471F-9D41-690927275A51</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./alfred-confluence-search -auth</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D6C26769-861D-4FF3-A846-C5EE09F9852C</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -271,23 +408,37 @@
 		<key>7D141F26-95B3-49E3-917B-CA5F192682FA</key>
 		<dict>
 			<key>xpos</key>
-			<real>540</real>
+			<real>690</real>
 			<key>ypos</key>
-			<real>190</real>
+			<real>135</real>
 		</dict>
 		<key>7D60B768-AE58-4B8C-8A7E-220045905370</key>
 		<dict>
 			<key>xpos</key>
-			<real>685</real>
+			<real>835</real>
 			<key>ypos</key>
-			<real>295</real>
+			<real>240</real>
 		</dict>
 		<key>8C6B1738-AA3D-4469-B055-5282A144E470</key>
 		<dict>
 			<key>xpos</key>
-			<real>540</real>
+			<real>690</real>
 			<key>ypos</key>
-			<real>295</real>
+			<real>240</real>
+		</dict>
+		<key>AA33E4A8-9024-471F-9D41-690927275A51</key>
+		<dict>
+			<key>xpos</key>
+			<real>525</real>
+			<key>ypos</key>
+			<real>310</real>
+		</dict>
+		<key>D6C26769-861D-4FF3-A846-C5EE09F9852C</key>
+		<dict>
+			<key>xpos</key>
+			<real>690</real>
+			<key>ypos</key>
+			<real>345</real>
 		</dict>
 		<key>DC4E363D-346B-41DA-A4E6-4E4C71D37B3E</key>
 		<dict>
@@ -297,6 +448,13 @@
 			<real>315</real>
 			<key>ypos</key>
 			<real>445</real>
+		</dict>
+		<key>F4E721AA-21BE-4CB2-9941-B980006E0DCF</key>
+		<dict>
+			<key>xpos</key>
+			<real>525</real>
+			<key>ypos</key>
+			<real>210</real>
 		</dict>
 		<key>F83C34EB-B9C9-4E14-9802-150419E2F13F</key>
 		<dict>
@@ -352,36 +510,6 @@
 			<key>variable</key>
 			<string>username</string>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>default</key>
-				<string></string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
-				<true/>
-				<key>trim</key>
-				<true/>
-			</dict>
-			<key>description</key>
-			<string>Confluence API Token.</string>
-			<key>label</key>
-			<string>API Token</string>
-			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>apitoken</string>
-		</dict>
-	</array>
-	<key>variables</key>
-	<dict>
-		<key>prev_query</key>
-		<string>test @cloudnative @</string>
-	</dict>
-	<key>variablesdontexport</key>
-	<array>
-		<string>prev_query</string>
 	</array>
 	<key>version</key>
 	<string>0.0.1</string>

@@ -1,26 +1,27 @@
 package main
 
 import (
-	"log"
-	"os"
-	"os/exec"
-	"time"
+    "log"
+    "os"
+    "os/exec"
+    "time"
 
-	aw "github.com/deanishe/awgo"
-	"github.com/deanishe/awgo/update"
-	cf "github.com/rwilgaard/confluence-go-api"
-	"go.deanishe.net/fuzzy"
+    aw "github.com/deanishe/awgo"
+    "github.com/deanishe/awgo/update"
+    cf "github.com/rwilgaard/confluence-go-api"
+    "go.deanishe.net/fuzzy"
 )
 
 type workflowConfig struct {
     URL      string `env:"confluence_url"`
     Username string `env:"username"`
-    APIToken string `env:"apitoken"`
+    APIToken string
 }
 
 const (
-    repo          = "rwilgaard/alfred-confluence-search"
-    updateJobName = "checkForUpdates"
+    repo            = "rwilgaard/alfred-confluence-search"
+    updateJobName   = "checkForUpdates"
+    keychainAccount = "alfred-confluence-search"
 )
 
 var (
@@ -80,6 +81,24 @@ func run() {
     if err := wf.Config.To(cfg); err != nil {
         panic(err)
     }
+
+    if opts.Auth {
+        runAuth()
+    }
+
+    token, err := wf.Keychain.Get(keychainAccount)
+    if err != nil {
+        wf.NewItem("You're not logged in.").
+            Subtitle("Press ⏎ to authenticate").
+            Icon(aw.IconInfo).
+            Arg("auth").
+            Valid(true)
+        wf.SendFeedback()
+        return
+    }
+
+    cfg.APIToken = token
+
 
     api, err := cf.NewAPI(cfg.URL, cfg.Username, cfg.APIToken)
     if err != nil {

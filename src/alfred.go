@@ -5,6 +5,7 @@ import (
 	"html"
 	"strings"
 
+	"github.com/ncruces/zenity"
 	cf "github.com/rwilgaard/confluence-go-api"
 )
 
@@ -55,4 +56,17 @@ func runSearch(api *cf.API) {
             Arg("page").
             Valid(true)
     }
+}
+
+func runAuth() {
+    _, pwd, err := zenity.Password(
+        zenity.Title(fmt.Sprintf("Enter API Token for %s", cfg.Username)),
+    )
+    if err != nil {
+        wf.FatalError(err)
+    }
+    if err := wf.Keychain.Set(keychainAccount, pwd); err != nil {
+        wf.FatalError(err)
+    }
+
 }
