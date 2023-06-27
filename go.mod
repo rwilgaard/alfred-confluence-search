@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/deanishe/awgo v0.29.1
-	github.com/lithammer/fuzzysearch v1.1.5
+	github.com/lithammer/fuzzysearch v1.1.8
 	github.com/rwilgaard/confluence-go-api v1.0.0
 )
 
