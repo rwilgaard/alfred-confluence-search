@@ -37,7 +37,7 @@ func runSpaces() {
             Match(fmt.Sprintf("%s %s", s.Key, s.Name)).
             Icon(getSpaceIcon(s.Key)).
             Subtitle(s.Name).
-            Arg(prevQuery + s.Key).
+            Arg(prevQuery + s.Key + " ").
             Valid(true)
     }
 }

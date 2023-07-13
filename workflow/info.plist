@@ -536,7 +536,7 @@ The following actions can be used on a highlighted page:
 		</dict>
 	</array>
 	<key>version</key>
-	<string>0.0.1</string>
+	<string>0.0.2</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
