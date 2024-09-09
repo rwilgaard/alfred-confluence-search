@@ -24,6 +24,6 @@ require (
 	github.com/ncruces/zenity v0.10.13
 	go.deanishe.net/env v0.5.1 // indirect
 	go.deanishe.net/fuzzy v1.0.0
-	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
