@@ -100,7 +100,6 @@ func run() {
 
     cfg.APIToken = token
 
-
     api, err := cf.NewAPI(cfg.URL, cfg.Username, cfg.APIToken)
     if err != nil {
         panic(err)
