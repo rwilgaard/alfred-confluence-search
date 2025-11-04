@@ -498,7 +498,7 @@ The following actions can be used on a highlighted page:
 				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
-				<string>https://docs.example.com</string>
+				<string>https://your-space.atlassian.net/wiki</string>
 				<key>required</key>
 				<true/>
 				<key>trim</key>
@@ -519,16 +519,16 @@ The following actions can be used on a highlighted page:
 				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
-				<string></string>
+				<string>your@email.com</string>
 				<key>required</key>
 				<true/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Confluence username.</string>
+			<string>Confluence email address.</string>
 			<key>label</key>
-			<string>Username</string>
+			<string>Email address</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
