@@ -6,6 +6,7 @@ import (
 	"log"
 	"strings"
 
+	"github.com/maniartech/gotime"
 	"github.com/rwilgaard/alfred-confluence-search/src/internal/util"
 	cf "github.com/rwilgaard/confluence-go-api"
 	"github.com/rwilgaard/go-alfredutils/alfredutils"
@@ -75,9 +76,9 @@ func addPageItems(query *util.ParsedQuery, pages *cf.Search) {
 		title := highlightReplacer.Replace(page.Title)
 		title = html.UnescapeString(title)
 
-		modTime := page.LastModified.Format("02-01-2006 15:04")
+		lastUpdateTime := gotime.TimeAgo(page.LastModified.Time)
 		space := page.Content.Space.Name
-		subtitle := fmt.Sprintf("%s  •  Updated: %s", space, modTime)
+		subtitle := fmt.Sprintf("%s  ·  Last updated %s", space, lastUpdateTime)
 
 		wf.NewItem(title).Subtitle(subtitle).
 			UID(page.Content.ID).
