@@ -40,7 +40,7 @@ func Autocomplete(query string) string {
 	return ""
 }
 
-func BuildJQL(query *ParsedQuery) (jql string) {
+func BuildJQL(query *ParsedQuery, spaceRestrictionList []string) (jql string) {
 	var conditions []string
 	typeCQL := "type = page"
 
@@ -55,7 +55,11 @@ func BuildJQL(query *ParsedQuery) (jql string) {
 		}
 	}
 
-	addClause("space.key", query.Spaces)
+	if len(query.Spaces) != 0 {
+		addClause("space.key", query.Spaces)
+	} else {
+		addClause("space.key", spaceRestrictionList)
+	}
 
 	if len(conditions) == 0 {
 		return typeCQL
