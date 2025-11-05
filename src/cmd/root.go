@@ -19,6 +19,7 @@ type workflowConfig struct {
 	APIToken         string
 	ResultsLimit     int    `env:"results_limit"`
 	CacheAge         int    `env:"cache_age"`
+	RestrictToSpaces string `env:"restrict_to_spaces"`
 }
 
 const (

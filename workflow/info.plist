@@ -8,29 +8,6 @@
 	<string>Tools</string>
 	<key>connections</key>
 	<dict>
-		<key>5E0B8CCB-5D9E-4990-9808-65AE7FA12FE2</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>F4E721AA-21BE-4CB2-9941-B980006E0DCF</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>AA33E4A8-9024-471F-9D41-690927275A51</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Copy URL</string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
-		</array>
 		<key>6A5F1866-D87B-469E-9B0A-F9A1AF50130C</key>
 		<array>
 			<dict>
@@ -268,6 +245,38 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>auth</string>
+						<key>outputlabel</key>
+						<string>auth</string>
+						<key>uid</key>
+						<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>F4E721AA-21BE-4CB2-9941-B980006E0DCF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -285,7 +294,7 @@
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
 				<integer>1</integer>
 				<key>queuemode</key>
@@ -324,38 +333,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>conditions</key>
-				<array>
-					<dict>
-						<key>inputstring</key>
-						<string></string>
-						<key>matchcasesensitive</key>
-						<false/>
-						<key>matchmode</key>
-						<integer>0</integer>
-						<key>matchstring</key>
-						<string>auth</string>
-						<key>outputlabel</key>
-						<string>auth</string>
-						<key>uid</key>
-						<string>D47DE2EC-B371-41E2-8B7E-06EA6E4A35C1</string>
-					</dict>
-				</array>
-				<key>elselabel</key>
-				<string>else</string>
-				<key>hideelse</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.conditional</string>
-			<key>uid</key>
-			<string>F4E721AA-21BE-4CB2-9941-B980006E0DCF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -390,55 +367,6 @@
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>8C6B1738-AA3D-4469-B055-5282A144E470</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>cf</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>1</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string>Searching...</string>
-				<key>script</key>
-				<string>./alfred-confluence-search -favourites</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Search for pages</string>
-				<key>title</key>
-				<string>Confluence Search</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>5E0B8CCB-5D9E-4990-9808-65AE7FA12FE2</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -651,7 +579,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>echo -n "${prev_query}${1} " | sed 's/.\{1\}$//'</string>
+				<string>echo -n "${prev_query}${1} " | sed 's/.\{1\}$ //'</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -826,17 +754,6 @@ The following actions can be used on a highlighted page:
 			<key>ypos</key>
 			<real>545</real>
 		</dict>
-		<key>5E0B8CCB-5D9E-4990-9808-65AE7FA12FE2</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>8</integer>
-			<key>note</key>
-			<string>Search for pages</string>
-			<key>xpos</key>
-			<real>315</real>
-			<key>ypos</key>
-			<real>300</real>
-		</dict>
 		<key>6A5F1866-D87B-469E-9B0A-F9A1AF50130C</key>
 		<dict>
 			<key>colorindex</key>
@@ -985,7 +902,7 @@ The following actions can be used on a highlighted page:
 			<key>xpos</key>
 			<real>315</real>
 			<key>ypos</key>
-			<real>165</real>
+			<real>240</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -996,16 +913,16 @@ The following actions can be used on a highlighted page:
 				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
-				<string>https://docs.example.com</string>
+				<string>https://your-space.atlassian.net/wiki</string>
 				<key>required</key>
 				<true/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>The base URL for your Confluence installation.</string>
+			<string>Cloud: https://your-space.atlassian.net/wiki  •  Data Center: https://mydomain.example.com</string>
 			<key>label</key>
-			<string>Confluence URL</string>
+			<string>Confluence Base URL</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
@@ -1017,16 +934,16 @@ The following actions can be used on a highlighted page:
 				<key>default</key>
 				<string></string>
 				<key>placeholder</key>
-				<string></string>
+				<string>your@email.com</string>
 				<key>required</key>
 				<true/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Confluence username.</string>
+			<string>The username for your Confluence account. This is probably an email address.</string>
 			<key>label</key>
-			<string>Username</string>
+			<string>Confluence Username</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
@@ -1036,22 +953,22 @@ The following actions can be used on a highlighted page:
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>1440</string>
-				<key>placeholder</key>
 				<string></string>
+				<key>placeholder</key>
+				<string>SPACEX,SPACEY,SPACEZ</string>
 				<key>required</key>
-				<true/>
+				<false/>
 				<key>trim</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>If supplied, search will be restricted to the pages within the spaces you specify. Leave blank to search across all spaces • NOTE: this restriction does not affect the @space filtering, so you can still search in a space not specified in this list using the @space filter.</string>
 			<key>label</key>
-			<string>Cache age (minutes)</string>
+			<string>Restrict to Spaces</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
-			<string>cache_age</string>
+			<string>restrict_to_spaces</string>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -1070,13 +987,34 @@ The following actions can be used on a highlighted page:
 				<true/>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>The maximum number of pages to return in search results.</string>
 			<key>label</key>
-			<string>Search results limit</string>
+			<string>Maximum Search Results</string>
 			<key>type</key>
 			<string>slider</string>
 			<key>variable</key>
 			<string>results_limit</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>1440</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The max age in minutes for the cache used for auto-completion of space names.</string>
+			<key>label</key>
+			<string>Cache age (minutes)</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>cache_age</string>
 		</dict>
 	</array>
 	<key>version</key>

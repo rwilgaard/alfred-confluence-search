@@ -36,7 +36,12 @@ var (
 				wf.FatalError(err)
 			}
 
-			cql := util.BuildJQL(parsedQuery)
+			var spaceRestrictionList []string
+			if cfg.RestrictToSpaces != "" {
+				spaceRestrictionList = strings.Split(cfg.RestrictToSpaces, ",")
+			}
+
+			cql := util.BuildJQL(parsedQuery, spaceRestrictionList)
 			params := cf.SearchQuery{
 				CQL:    cql,
 				Limit:  cfg.ResultsLimit,
