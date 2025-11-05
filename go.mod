@@ -10,25 +10,20 @@ require (
 )
 
 require (
-	dario.cat/mergo v1.0.2 // indirect
 	github.com/akavel/rsrc v0.10.2 // indirect
 	github.com/dchest/jsmin v1.0.0 // indirect
 	github.com/google/go-cmp v0.5.8 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/josephspurrier/goversioninfo v1.5.0 // indirect
+	github.com/maniartech/gotime v1.1.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
-	github.com/tidwall/gjson v1.18.0 // indirect
-	github.com/tidwall/match v1.2.0 // indirect
-	github.com/tidwall/pretty v1.2.1 // indirect
 	golang.org/x/image v0.32.0 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 )
 
 require (
-	github.com/ctreminiom/go-atlassian v1.6.1
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
 	github.com/ncruces/zenity v0.10.14
