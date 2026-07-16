@@ -2,10 +2,11 @@ module github.com/rwilgaard/alfred-confluence-search
 
 go 1.24.0
 
-toolchain go1.24.5
+toolchain go1.26.5
 
 require (
 	github.com/deanishe/awgo v0.29.1
+	github.com/maniartech/gotime v1.1.0
 	github.com/rwilgaard/confluence-go-api v1.0.0
 )
 
@@ -15,7 +16,6 @@ require (
 	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/josephspurrier/goversioninfo v1.5.0 // indirect
-	github.com/maniartech/gotime v1.1.0 // indirect
 	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
