@@ -6,7 +6,7 @@ toolchain go1.26.5
 
 require (
 	github.com/deanishe/awgo v0.29.1
-	github.com/maniartech/gotime v1.1.0
+	github.com/maniartech/gotime/v2 v2.0.3
 	github.com/rwilgaard/confluence-go-api v1.0.0
 )
 

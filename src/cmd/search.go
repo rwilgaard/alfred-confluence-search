@@ -6,7 +6,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/maniartech/gotime"
+	"github.com/maniartech/gotime/v2"
 	"github.com/rwilgaard/alfred-confluence-search/src/internal/util"
 	cf "github.com/rwilgaard/confluence-go-api"
 	"github.com/rwilgaard/go-alfredutils/alfredutils"
