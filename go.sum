@@ -35,6 +35,7 @@ github.com/magefile/mage v1.15.0 h1:BvGheCMAsG3bWUDbZ8AyXXpCNwU9u5CB6sM+HNb9HYg=
 github.com/magefile/mage v1.15.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
 github.com/maniartech/gotime v1.1.0 h1:/xsp3E0o0zPQ4pjCNOs3NGWMk/mpCQNNaGNfhTbps5E=
 github.com/maniartech/gotime v1.1.0/go.mod h1:NBM2sTwhRbRF87XPpPBAugxd0H3B3GT0W85SJYvb+To=
+github.com/maniartech/gotime/v2 v2.0.3/go.mod h1:RnMZ0G2o+jN/72unA5uukZ0sSiUqkYjp4VFmV9kKvYQ=
 github.com/ncruces/zenity v0.10.14 h1:OBFl7qfXcvsdo1NUEGxTlZvAakgWMqz9nG38TuiaGLI=
 github.com/ncruces/zenity v0.10.14/go.mod h1:ZBW7uVe/Di3IcRYH0Br8X59pi+O6EPnNIOU66YHpOO4=
 github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLANZcx1PVRCS0qkT7pwLkGfwJo4zjcN/Tysno=
