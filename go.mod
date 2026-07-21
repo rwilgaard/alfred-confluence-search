@@ -27,7 +27,7 @@ require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
 	github.com/ncruces/zenity v0.10.14
-	github.com/rwilgaard/go-alfredutils v1.2.1
+	github.com/rwilgaard/go-alfredutils v1.3.0
 	github.com/spf13/cobra v1.10.2
 	go.deanishe.net/env v0.5.1 // indirect
 	go.deanishe.net/fuzzy v1.0.0

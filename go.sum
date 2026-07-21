@@ -47,6 +47,8 @@ github.com/rwilgaard/confluence-go-api v1.0.0 h1:6KjuIXKOykAJuOVaGIn06PwvToNSfRc
 github.com/rwilgaard/confluence-go-api v1.0.0/go.mod h1:/jImcqm2gCtCeTxu+3rTJogt0i2S0awDfd3Tc2d3E8U=
 github.com/rwilgaard/go-alfredutils v1.2.1 h1:2QGtUyvGzWXCnIe4Q0soesvmF43SZk3uHWsJQqENdcI=
 github.com/rwilgaard/go-alfredutils v1.2.1/go.mod h1:zwxLYwoQcxvBH8tb1EwH7XNSl2bwZESkacANyjEBs+E=
+github.com/rwilgaard/go-alfredutils v1.3.0 h1:dDzY0QI3euKYAN4WnQHsRMtd6iFKFLFrk1eDX4WCYLk=
+github.com/rwilgaard/go-alfredutils v1.3.0/go.mod h1:zwxLYwoQcxvBH8tb1EwH7XNSl2bwZESkacANyjEBs+E=
 github.com/spf13/cobra v1.10.2 h1:DMTTonx5m65Ic0GOoRY2c16WCbHxOOw6xxezuLaBpcU=
 github.com/spf13/cobra v1.10.2/go.mod h1:7C1pvHqHw5A4vrJfjNwvOdzYu0Gml16OCs2GRiTUUS4=
 github.com/spf13/pflag v1.0.9/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
