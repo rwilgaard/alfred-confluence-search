@@ -1,6 +1,6 @@
 module github.com/rwilgaard/alfred-confluence-search
 
-go 1.24.0
+go 1.25.0
 
 toolchain go1.26.5
 
@@ -15,22 +15,22 @@ require (
 	github.com/dchest/jsmin v1.0.0 // indirect
 	github.com/google/go-cmp v0.5.8 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
-	github.com/josephspurrier/goversioninfo v1.5.0 // indirect
-	github.com/randall77/makefat v0.0.0-20210315173500-7ddd0e42c844 // indirect
+	github.com/josephspurrier/goversioninfo v1.7.0 // indirect
+	github.com/randall77/makefat v0.0.0-20260406194835-1b91746796b7 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.10.0 // indirect
-	golang.org/x/image v0.32.0 // indirect
-	golang.org/x/sys v0.37.0 // indirect
+	golang.org/x/image v0.44.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
 )
 
 require (
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/magefile/mage v1.15.0 // indirect
-	github.com/ncruces/zenity v0.10.14
+	github.com/ncruces/zenity v0.10.15
 	github.com/rwilgaard/go-alfredutils v1.3.0
 	github.com/spf13/cobra v1.10.2
 	go.deanishe.net/env v0.5.1 // indirect
 	go.deanishe.net/fuzzy v1.0.0
 	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
+	golang.org/x/text v0.40.0 // indirect
 )
