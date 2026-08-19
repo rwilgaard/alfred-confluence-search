@@ -2,7 +2,7 @@ module github.com/rwilgaard/alfred-confluence-search
 
 go 1.25.0
 
-toolchain go1.26.6
+toolchain go1.26.7
 
 require (
 	github.com/deanishe/awgo v0.29.1
